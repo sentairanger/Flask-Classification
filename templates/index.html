@@ -1,0 +1,32 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<link rel="stylesheet" href="/static/style.css">
+<title>OpenVINO Image Classification</title>
+</head>
+<body>
+<div align="center">
+<form action="{{url_for('upload_file')}}" enctype="multipart/form-data", method="POST">
+  <input name="img" type="file"  class="submit">
+   <input type="submit" class="submit" >
+</form >
+<form action="{{url_for('take_picture')}}" method="POST">
+<input type="submit" value="Capture" class="submit">
+</form>
+</div>
+<div align="center" class="classify">
+<h1 align="center">Image Classification</h1>
+<p align="center">Classification <span id="image"></span></p>
+<button align="center" onclick="classifier()">Classify</button>
+</div>
+{% if img %}
+<div align="center">
+<h1>Image</h1>
+<img src="{{img}}">
+{% else %}
+<h1 align="center">Image rendered here</h1>
+</div>
+{% endif %}
+<script src="/static/logic.js"></script>
+</body>
+</html>
